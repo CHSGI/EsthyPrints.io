@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EsthyPrints: Your Vision, Printed in Lagos</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB; /* A very light gray background */
+        }
+
+        /* Hero text animation */
+        .hero-headline-container {
+            display: grid;
+            text-align: center;
+        }
+
+        .hero-headline {
+            grid-area: 1 / 1;
+            opacity: 0;
+            animation: slideAnimation 12s infinite;
+            transform: translateY(20px);
+        }
+
+        .hero-headline:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .hero-headline:nth-child(3) {
+            animation-delay: 8s;
+        }
+
+        @keyframes slideAnimation {
+            0% { opacity: 0; transform: translateY(20px); }
+            8% { opacity: 1; transform: translateY(0); }
+            33% { opacity: 1; transform: translateY(0); }
+            41% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 0; }
+        }
+
+        /* Product grid hover effect */
+        .product-card .default-img {
+            display: block;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .product-card .hover-img {
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .product-card:hover .default-img {
+            opacity: 0;
+            display: none;
+        }
+        .product-card:hover .hover-img {
+            opacity: 1;
+            display: block;
+        }
+        .product-card .image-container {
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover .image-container {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #111827; /* Gray-900 */
+            color: #FFFFFF;
+            padding: 4rem 0;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .footer a {
+            color: #60A5FA; /* Sky-400 */
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #3B82F6; /* Sky-500 */
+        }
+        .instagram-link {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .instagram-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-extrabold text-gray-900">EsthyPrints</a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#products" class="text-gray-600 hover:text-green-600 transition">Products</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-green-600 transition">How It Works</a>
+                <a href="#bulk-orders" class="text-gray-600 hover:text-green-600 transition">Bulk Orders</a>
+                <a href="#resources" class="text-gray-600 hover:text-green-600 transition">Resources</a>
+                <a href="#pricing" class="text-gray-600 hover:text-green-600 transition">Pricing</a>
+            </div>
+
+            <!-- Desktop CTAs -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-green-600 font-medium">Log In</a>
+                <a href="#" class="bg-green-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition shadow">Sign Up</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-gray-800 bg-opacity-75 z-40 lg:hidden">
+             <div class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl p-6">
+                <a href="#" class="text-2xl font-extrabold text-gray-900 mb-8 block">EsthyPrints</a>
+                <a href="#products" class="block py-2 text-gray-600 hover:text-green-600">Products</a>
+                <a href="#how-it-works" class="block py-2 text-gray-600 hover:text-green-600">How It Works</a>
+                <a href="#bulk-orders" class="block py-2 text-gray-600 hover:text-green-600">Bulk Orders</a>
+                <a href="#resources" class="block py-2 text-gray-600 hover:text-green-600">Resources</a>
+                <a href="#pricing" class="block py-2 text-gray-600 hover:text-green-600">Pricing</a>
+                <div class="mt-8 border-t pt-6 space-y-4">
+                    <a href="#" class="block text-center text-gray-600 hover:text-green-600 font-medium">Log In</a>
+                    <a href="#" class="block text-center bg-green-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition shadow">Sign Up</a>
+                </div>
+             </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[80vh] min-h-[600px] flex items-center justify-center text-white overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+            <img src="https://placehold.co/1600x900/16A34A/FFFFFF?text=Lagos+Vibes&font=raleway" 
+                 onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/333333?text=Image+Not+Found';"
+                 alt="Vibrant scene in Lagos, Nigeria" class="absolute inset-0 w-full h-full object-cover">
+            
+            <div class="relative z-20 text-center px-4">
+                <div class="hero-headline-container h-24">
+                    <h1 class="hero-headline text-4xl md:text-6xl font-black tracking-tight">EsthyPrints: Your Vision, Printed.</h1>
+                    <h1 class="hero-headline text-4xl md:text-6xl font-black tracking-tight">Launch Your Merch with Zero Inventory.</h1>
+                    <h1 class="hero-headline text-4xl md:text-6xl font-black tracking-tight">From Idea to Iconic, Made in Nigeria.</h1>
+                </div>
+                <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl font-light">Quality you can trust. Service you'll love. Start your brand today with no upfront costs.</p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#" class="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition shadow-lg transform hover:scale-105">Start Designing</a>
+                    <a href="#bulk-orders" class="text-white border-2 border-white px-8 py-3 rounded-lg text-lg font-bold hover:bg-white hover:text-black transition">Get a Quote for Bulk Orders</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust-Building Section -->
+        <section class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why Choose EsthyPrints?</h2>
+                    <p class="text-lg text-gray-600 mt-2">The perfect partner for your creative business in Nigeria.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1zM3 11h10M16 16l4-4m0 0l-4-4m4 4H9"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast, Nationwide Delivery</h3>
+                        <p class="text-gray-600">Printed in Lagos and shipped directly to your customer's doorstep anywhere in Nigeria.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4M11 3l4 4-4 4-4-4 4-4zM19 17l4 4-4 4-4-4 4-4z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Premium Quality Prints</h3>
+                        <p class="text-gray-600">We use top-tier DTG and embroidery technology to make your designs pop.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1h4v1m-4 0h-4v-1h4m0-4h.01M12 4h.01M12 2v-1h4v1m-4 0h-4v-1h4m0 16v-1h4v1m-4 0h-4v-1h4m0-4h.01M12 20h.01M12 22v-1h4v1m-4 0h-4v-1h4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">No Upfront Costs</h3>
+                        <p class="text-gray-600">You only pay when you make a sale. No setup fees, no monthly charges. Ever.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="text-center">
+                       <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Dedicated Support</h3>
+                        <p class="text-gray-600">Need help? Our team is available via WhatsApp and Email to guide you.</p>
+                    </div>
+                </div>
+                <div class="mt-16 text-center">
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Trusted by creators and powered by</p>
+                    <div class="flex justify-center items-center gap-x-8 md:gap-x-12 opacity-70">
+                        <img src="https://placehold.co/120x40/FFFFFF/000000?text=Paystack" alt="Paystack Logo" class="h-8 md:h-10">
+                        <img src="https://placehold.co/120x40/FFFFFF/000000?text=Flutterwave" alt="Flutterwave Logo" class="h-8 md:h-10">
+                        <img src="https://placehold.co/120x40/FFFFFF/000000?text=GIG+Logistics" alt="GIG Logistics Logo" class="h-8 md:h-10">
+                        <img src="https://placehold.co/120x40/FFFFFF/000000?text=Kwik+Delivery" alt="Kwik Delivery Logo" class="h-8 md:h-10">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Showcase Grid -->
+        <section id="products" class="py-16 sm:py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Endless Products, Endless Possibilities</h2>
+                    <p class="text-lg text-gray-600 mt-2">High-quality items ready for your creative touch.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Product 1 -->
+                    <a href="#" class="group product-card col-span-1 md:col-span-1">
+                        <div class="relative bg-gray-200 rounded-lg overflow-hidden aspect-square">
+                            <div class="image-container">
+                                <img src="https://placehold.co/500x500/E5E7EB/333333?text=T-Shirt" alt="Custom T-Shirt" class="w-full h-full object-cover default-img">
+                                <img src="https://placehold.co/500x500/D1D5DB/333333?text=T-Shirt+Model" alt="Custom T-Shirt on model" class="w-full h-full object-cover hover-img">
+                            </div>
+                            <div class="absolute bottom-4 left-4 bg-white bg-opacity-80 backdrop-blur-sm px-3 py-1 rounded-md">
+                                <h3 class="font-semibold text-gray-800">T-Shirts</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Product 2 -->
+                    <a href="#" class="group product-card col-span-1 md:col-span-1">
+                        <div class="relative bg-gray-200 rounded-lg overflow-hidden aspect-square">
+                            <div class="image-container">
+                                <img src="https://placehold.co/500x500/E5E7EB/333333?text=Tote+Bag" alt="Custom Tote Bag" class="w-full h-full object-cover default-img">
+                                <img src="https://placehold.co/500x500/D1D5DB/333333?text=Tote+Bag+Model" alt="Custom Tote Bag on model" class="w-full h-full object-cover hover-img">
+                            </div>
+                             <div class="absolute bottom-4 left-4 bg-white bg-opacity-80 backdrop-blur-sm px-3 py-1 rounded-md">
+                                <h3 class="font-semibold text-gray-800">Tote Bags</h3>
+                            </div>
+                        </div>
+                    </a>
+                     <!-- CTA Block -->
+                    <div class="col-span-2 md:col-span-2 row-span-2 bg-gray-800 text-white rounded-lg p-8 md:p-12 flex flex-col justify-center items-center text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold">Hundreds of Products</h2>
+                        <p class="mt-4 text-lg text-gray-300">Ready for your design. Explore our full catalog to find the perfect match for your brand.</p>
+                        <a href="#" class="mt-8 bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg">Browse the Full Catalog</a>
+                    </div>
+                    <!-- Product 3 -->
+                    <a href="#" class="group product-card col-span-1 md:col-span-1">
+                        <div class="relative bg-gray-200 rounded-lg overflow-hidden aspect-square">
+                           <div class="image-container">
+                                <img src="https://placehold.co/500x500/E5E7EB/333333?text=Mug" alt="Custom Mug" class="w-full h-full object-cover default-img">
+                                <img src="https://placehold.co/500x500/D1D5DB/333333?text=Mug+Lifestyle" alt="Custom Mug in use" class="w-full h-full object-cover hover-img">
+                            </div>
+                             <div class="absolute bottom-4 left-4 bg-white bg-opacity-80 backdrop-blur-sm px-3 py-1 rounded-md">
+                                <h3 class="font-semibold text-gray-800">Mugs</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Product 4 -->
+                    <a href="#" class="group product-card col-span-1 md:col-span-1">
+                        <div class="relative bg-gray-200 rounded-lg overflow-hidden aspect-square">
+                            <div class="image-container">
+                                <img src="https://placehold.co/500x500/E5E7EB/333333?text=Face+Cap" alt="Custom Face Cap" class="w-full h-full object-cover default-img">
+                                <img src="https://placehold.co/500x500/D1D5DB/333333?text=Cap+Model" alt="Custom Face Cap on model" class="w-full h-full object-cover hover-img">
+                            </div>
+                             <div class="absolute bottom-4 left-4 bg-white bg-opacity-80 backdrop-blur-sm px-3 py-1 rounded-md">
+                                <h3 class="font-semibold text-gray-800">Headwear</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Building Your Brand is as Easy as 1-2-3</h2>
+                    <p class="text-lg text-gray-600 mt-2">We handle the hard parts so you can focus on creating.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                    <!-- Step 1 -->
+                    <div>
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mx-auto mb-4 border-4 border-green-200">
+                            <span class="text-3xl font-bold text-green-600">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">DESIGN</h3>
+                        <p class="text-gray-600">Upload your artwork or create a new one with our easy-to-use Design Maker.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div>
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mx-auto mb-4 border-4 border-green-200">
+                            <span class="text-3xl font-bold text-green-600">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">SELL</h3>
+                        <p class="text-gray-600">Connect your online store or simply share your unique product link with customers.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div>
+                         <div class="flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mx-auto mb-4 border-4 border-green-200">
+                            <span class="text-3xl font-bold text-green-600">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">WE HANDLE THE REST</h3>
+                        <p class="text-gray-600">We print, package, and ship from Lagos directly to your customer. You just relax and collect your profit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Example Section -->
+        <section id="pricing" class="py-16 sm:py-24">
+            <div class="container mx-auto px-6">
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
+                    <div class="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
+                        <div class="lg:self-center">
+                            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                                <span class="block">Your Passion Can Pay.</span>
+                            </h2>
+                            <p class="mt-4 text-lg leading-6 text-gray-300">See how much you could make with EsthyPrints. No hidden fees, just pure profit.</p>
+                            <div class="mt-8 bg-white rounded-lg p-6 text-gray-800">
+                                <div class="flex justify-between items-center text-lg">
+                                    <p>You sell a T-Shirt for:</p>
+                                    <p class="font-bold text-green-600">₦15,000</p>
+                                </div>
+                                <div class="flex justify-between items-center text-lg mt-2">
+                                    <p>EsthyPrints base price:</p>
+                                    <p class="font-bold">- ₦8,000</p>
+                                </div>
+                                <div class="border-t my-4"></div>
+                                <div class="flex justify-between items-center text-2xl font-bold">
+                                    <p>Your Profit:</p>
+                                    <p class="text-green-600">₦7,000</p>
+                                </div>
+                            </div>
+                             <a href="#" class="mt-8 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition shadow-lg">View Our Full Pricing</a>
+                        </div>
+                    </div>
+                    <div class="aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1 lg:aspect-w-1">
+                        <img class="transform translate-x-6 translate-y-6 rounded-md object-cover object-left-top sm:translate-x-16 lg:translate-y-20" src="https://placehold.co/800x1000/16A34A/FFFFFF?text=Profit" alt="Happy customer with merchandise">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrations Section -->
+        <section class="py-16 sm:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Sell Anywhere, Effortlessly</h2>
+                    <p class="mt-2 text-lg text-gray-600">Connect with the tools you already use, or sell directly.</p>
+                    <div class="mt-8 flex justify-center items-center flex-wrap gap-8">
+                         <div class="text-center p-4">
+                             <img src="https://placehold.co/150x80/FFFFFF/000000?text=Shopify" alt="Shopify" class="h-12 mx-auto">
+                             <p class="mt-2 font-semibold">Shopify</p>
+                         </div>
+                         <div class="text-center p-4">
+                             <img src="https://placehold.co/150x80/FFFFFF/000000?text=WooCommerce" alt="WooCommerce" class="h-12 mx-auto">
+                             <p class="mt-2 font-semibold">WooCommerce</p>
+                         </div>
+                         <div class="text-center p-4">
+                            <img src="https://placehold.co/150x80/FFFFFF/000000?text=Instagram" alt="Instagram" class="h-12 mx-auto">
+                            <p class="mt-2 font-semibold">Social Media</p>
+                        </div>
+                        <div class="text-center p-4">
+                            <img src="https://placehold.co/150x80/FFFFFF/000000?text=WhatsApp" alt="WhatsApp" class="h-12 mx-auto">
+                            <p class="mt-2 font-semibold">Direct Links</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div>
+          &copy; 2025 EsthyPrints. All rights reserved.
+        </div>
+        <div>
+          <a href="https://www.instagram.com/esthyprints/" target="_blank" rel="noopener" class="instagram-link">
+            <img src="instagram.svg" alt="Instagram" class="instagram-icon" />
+            @esthyprints
+          </a>
+        </div>
+        <div>
+          Contact: <a href="mailto:info@esthyprints.com">info@esthyprints.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainContent = document.querySelector('main');
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && e.target !== menuBtn) {
+                mobileMenu.classList.remove('open');
+            }
+        });
+    </script>
+
+</body>
+</html>
